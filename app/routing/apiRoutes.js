@@ -34,16 +34,35 @@ module.exports = function(app) {
   // ---------------------------------------------------------------------------
 
 
-//Function to loop through the MatchArrayData and finc the closest match
+//Function to loop through the MatchArrayData and find the closest match
 //   app.get("/data/MatchArrayData", function(data) {
 // for (var i = 0; i < data.length; i++) {
 
 
   app.post("/api/survey", function(req, res) {
-    
-  friends.push(req.body);
+  console.log(userData);  
+  friendsArray.push(userData);
 
-
+res.json(userData);
   });
+
+
+// Search through friendsArray - provides JSON ** need to change this
+app.get("/api/:friendsArray?", function(req, res) {
+  var user1 = [];
+  var user2 = [];
+  var difference = [];
+  var highest difference
+
+      for (var i = 0; i < friendsArray.length; i++) {
+      if (chosen === friendsArray[i].routeName) {
+        return res.json(friendsArray[i]);
+      }
+    }
+
+    return res.json(false);
+  }
+  return res.json(friendsArray);
+});
 
 };
